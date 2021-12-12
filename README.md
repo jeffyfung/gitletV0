@@ -246,3 +246,66 @@ Merges files from the given branch into the current branch. Instead of only disp
 files have changed since the split point (commit) during merges (as Git does), Gitlet commits the conflict message. A 
 separate commit is needed to resolve conflicts. Gitlet also has a different way to decide which of multiple possible 
 split points to use.
+
+### add-remote
+
+Run the following command.
+```
+java -cp [LOCATION_OF_GITLET_CLASSES] gitlet.Main add-remote [REMOTE_NAME] [REMOTE_REPO]/.gitlet
+```
+
+Description: 
+
+Add a separate, existing directory as a remote repository and set it to the given remote name.
+
+### rm-remote
+
+Run the following command.
+```
+java -cp [LOCATION_OF_GITLET_CLASSES] gitlet.Main rm-remote [Remote_Name]
+```
+
+Description:
+
+Remove information associated with the given remote name.
+
+### push
+
+Run the following command.
+```
+java -cp [LOCATION_OF_GITLET_CLASSES] gitlet.Main push [REMOTE_NAME] [REMOTE_BRANCH_NAME]
+```
+
+Description:
+
+Updates the changes in current repository to the given branch from the given remote repository by creating a new
+commit to the given remote branch. This command only works if the remote branch’s head is in the history of the current 
+local head, which means that the local branch contains some commits in the future of the remote branch. Create a new 
+branch from the given remote repository if the branch does not already exist.
+
+### fetch
+
+Run the following command.
+```
+java -cp [LOCATION_OF_GITLET_CLASSES] gitlet.Main fetch [REMOTE_NAME] [REMOTE_BRANCH_NAME]
+```
+
+Description:
+
+Copies all commits and blobs from the given branch in the remote repository (that are not already in the current 
+repository) into a branch named `remote name/remote branch name` in the local repository. Also updates the branch head.
+
+### pull
+
+Run the following command.
+```
+java -cp [LOCATION_OF_GITLET_CLASSES] gitlet.Main pull [REMOTE_NAME] [REMOTE_BRANCH_NAME]
+```
+
+Description:
+
+Fetches branch `remote name/remote branch name` as for the fetch command, and then merges that fetch into the current 
+branch.
+
+
+
